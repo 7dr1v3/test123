@@ -130,7 +130,11 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["discount"]["discount"], 100
     assert_equal result["discount"]["discount_percent"], 1.6666666666666667 # 100.0 / 6000.0
 
-    post "/submit", { user: { id: user.id }, operation_id: result["operation_id"], write_off: 4900 }.to_json
+    operation = Operation[result["operation_id"]]
+
+    assert_equal operation.done, false
+
+    post "/submit", { user: { id: user.id }, operation_id: operation.id, write_off: 4900 }.to_json
 
     assert last_response.ok?
 
@@ -144,5 +148,6 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["operation"]["check_summ"], 1000
 
     assert_equal user.reload.bonus, 5100
+    assert_equal operation.reload.done, true
   end
 end
