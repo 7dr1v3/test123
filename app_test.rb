@@ -138,5 +138,7 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["operation"]["discount_percent"], 1.6666666666666667
     assert_equal result["operation"]["write_off"], 4900
     assert_equal result["operation"]["check_summ"], 1000
+
+    assert_equal user.reload.bonus, 5100
   end
 end
