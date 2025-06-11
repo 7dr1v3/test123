@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module LoyaltyRule
   class Default
     attr_reader :value

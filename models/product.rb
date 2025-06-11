@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Product < Sequel::Model
   LOYALTY_RULES = {
     nil => LoyaltyRule::Default, # type может быть nil, в базе нет ограничения
