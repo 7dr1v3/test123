@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CalculateOperation
   Result = Struct.new(:operation, :positions)
 
