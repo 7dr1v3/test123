@@ -17,3 +17,5 @@ gem 'yajl-ruby', require: 'yajl'
 gem "rake"
 gem "rack-test"
 gem "test-unit"
+
+gem "rubocop"
