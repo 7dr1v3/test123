@@ -2,7 +2,7 @@
 
 ENV["APP_ENV"] = "test"
 
-require "./app.rb"
+require "./app"
 require "test/unit"
 require "rack/test"
 

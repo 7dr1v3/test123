@@ -10,7 +10,7 @@ end
 configure :test do
   Sequel.extension :migration
   DB = Sequel.sqlite(":memory:", logger: Logger.new($stdout))
-  Sequel::Migrator.run(DB, "./db/migrations", :use_transactions=>false)
+  Sequel::Migrator.run(DB, "./db/migrations", use_transactions: false)
 end
 
 Dir["models/*.rb"].each { |path| require_relative path.to_s }

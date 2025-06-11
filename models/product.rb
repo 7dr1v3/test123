@@ -7,7 +7,7 @@ class Product < Sequel::Model
     "increased_cashback" => LoyaltyRule::IncreasedCashback,
     "discount" => LoyaltyRule::Discount,
     "noloyalty" => LoyaltyRule::NoLoyalty,
-  }
+  }.freeze
 
   # id продуктов не случайны
   unrestrict_primary_key

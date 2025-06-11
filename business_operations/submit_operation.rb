@@ -19,7 +19,7 @@ class SubmitOperation
       # полная стоимость с учётом скидок
       result_price = operation.check_summ
 
-      new_cashback = max_cashback * (1 - write_off/operation.allowed_write_off)
+      new_cashback = max_cashback * (1 - (write_off / operation.allowed_write_off))
       new_cashback_percent = new_cashback / result_price
       new_check_summ = result_price - write_off
 
