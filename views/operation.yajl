@@ -1,0 +1,39 @@
+json = {}
+
+json[:status] = :success
+
+json[:user] = {
+  id: user.id,
+  name: user.name,
+  bonus: user.bonus.to_f,
+  loyalty_program: user.loyalty_program.values,
+}
+
+json[:operation_id] = result.operation.id
+
+json[:check_summ] = result.operation.check_summ.to_f
+
+json[:bonuses] = {
+  balance: user.bonus.to_f,
+  allowed_write_off: result.operation.allowed_write_off.to_f,
+  cashback_percent: result.operation.cashback_percent.to_f * 100,
+  cashback: result.operation.cashback.to_f,
+}
+
+json[:discount] = {
+  discount: result.operation.discount.to_f,
+  discount_percent: result.operation.discount_percent.to_f * 100,
+}
+
+json[:positions] = result.positions.map do |position|
+  {
+    id: position["id"],
+    price: position["price"],
+    quantity: position["quantity"],
+    type: position[:product]&.type,
+    value: position[:product]&.value,
+    description: position[:product]&.name,
+    discount_percent: position[:discount_percent].to_f * 100,
+    discount: position[:discount].to_f,
+  }
+end

@@ -1,0 +1,15 @@
+json = {}
+
+json[:status] = :success
+
+json[:system_message] = "System OK"
+
+json[:operation] = {
+  user_id: operation.user_id,
+  cashback: operation.cashback.to_f,
+  cashback_percent: operation.cashback_percent.to_f * 100,
+  discount: operation.discount.to_f,
+  discount_percent: operation.discount_percent.to_f * 100,
+  write_off: operation.write_off.to_f,
+  check_summ: operation.check_summ.to_f,
+}
