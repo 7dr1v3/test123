@@ -58,6 +58,8 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["operation"]["check_summ"], 400
     assert_equal result["operation"]["cashback_percent"], 0
     assert_equal result["operation"]["cashback"], 0
+
+    assert_equal user.reload.bonus, 9905
   end
 
   def test_operation_with_cashback_loyalty_program
@@ -94,6 +96,8 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["operation"]["check_summ"], 500
     assert_equal result["operation"]["cashback_percent"], 9.090909090909092
     assert_equal result["operation"]["cashback"], 50
+
+    assert_equal user.reload.bonus, 10_000
   end
 
   def test_operation_with_loyalty_rules
