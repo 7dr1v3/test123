@@ -16,4 +16,3 @@ class Product < Sequel::Model
     @loyalty_rule ||= LOYALTY_RULES[type].new(value)
   end
 end
-

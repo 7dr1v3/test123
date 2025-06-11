@@ -140,4 +140,3 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["operation"]["check_summ"], 1000
   end
 end
-
