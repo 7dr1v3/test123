@@ -27,9 +27,9 @@ class AppTest < Test::Unit::TestCase
     user = User.create(loyalty_program:, name: "TestName", bonus: 10_000)
 
     post "/operation", { user_id: user.id, positions: [
-      {"id" => 1, "price" => 100, "quantity" => 5},
-      {"id" => 2, "price" => 10, "quantity" => 5},
-    ]}.to_json
+      { "id" => 1, "price" => 100, "quantity" => 5 },
+      { "id" => 2, "price" => 10, "quantity" => 5 },
+    ] }.to_json
 
     assert last_response.ok?
 
@@ -45,7 +45,7 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["discount"]["discount_percent"], 10
     assert_equal result["positions"].size, 2
 
-    post "/submit", { user: {id: user.id}, operation_id: result["operation_id"], write_off: 95 }.to_json
+    post "/submit", { user: { id: user.id }, operation_id: result["operation_id"], write_off: 95 }.to_json
 
     assert last_response.ok?
 
@@ -65,9 +65,9 @@ class AppTest < Test::Unit::TestCase
     user = User.create(loyalty_program:, name: "TestName", bonus: 10_000)
 
     post "/operation", { user_id: user.id, positions: [
-      {"id" => 1, "price" => 100, "quantity" => 5},
-      {"id" => 2, "price" => 10, "quantity" => 5},
-    ]}.to_json
+      { "id" => 1, "price" => 100, "quantity" => 5 },
+      { "id" => 2, "price" => 10, "quantity" => 5 },
+    ] }.to_json
 
     assert last_response.ok?
 
@@ -81,7 +81,7 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["discount"]["discount_percent"], 0
     assert_equal result["positions"].size, 2
 
-    post "/submit", { user: {id: user.id}, operation_id: result["operation_id"], write_off: 50 }.to_json
+    post "/submit", { user: { id: user.id }, operation_id: result["operation_id"], write_off: 50 }.to_json
 
     assert last_response.ok?
 
@@ -107,13 +107,13 @@ class AppTest < Test::Unit::TestCase
     Product.create(id: 5, name: "5", type: nil, value: nil)
 
     post "/operation", { user_id: user.id, positions: [
-      {"id" => 1, "price" => 100, "quantity" => 10},
-      {"id" => 2, "price" => 100, "quantity" => 10},
-      {"id" => 3, "price" => 100, "quantity" => 10},
-      {"id" => 4, "price" => 100, "quantity" => 10},
-      {"id" => 5, "price" => 100, "quantity" => 10},
-      {"id" => 6, "price" => 100, "quantity" => 10},
-    ]}.to_json
+      { "id" => 1, "price" => 100, "quantity" => 10 },
+      { "id" => 2, "price" => 100, "quantity" => 10 },
+      { "id" => 3, "price" => 100, "quantity" => 10 },
+      { "id" => 4, "price" => 100, "quantity" => 10 },
+      { "id" => 5, "price" => 100, "quantity" => 10 },
+      { "id" => 6, "price" => 100, "quantity" => 10 },
+    ] }.to_json
 
     assert last_response.ok?
 
@@ -126,7 +126,7 @@ class AppTest < Test::Unit::TestCase
     assert_equal result["discount"]["discount"], 100
     assert_equal result["discount"]["discount_percent"], 1.6666666666666667 # 100.0 / 6000.0
 
-    post "/submit", { user: {id: user.id}, operation_id: result["operation_id"], write_off: 4900 }.to_json
+    post "/submit", { user: { id: user.id }, operation_id: result["operation_id"], write_off: 4900 }.to_json
 
     assert last_response.ok?
 
